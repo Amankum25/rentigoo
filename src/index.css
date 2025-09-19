@@ -125,7 +125,6 @@
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
   }
 
   .glass-card {

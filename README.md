@@ -1,24 +1,14 @@
-# Welcome to your Lovable project
+# Rentigoo - Share & Lend Platform
 
-## Project info
-
-**URL**: https://lovable.dev/projects/094e4d33-a6de-46df-8272-e69e08a77121
+A modern rental marketplace built with React and Vite.
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/094e4d33-a6de-46df-8272-e69e08a77121) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+To run this project locally, you'll need Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Follow these steps:
 
@@ -62,12 +52,11 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/094e4d33-a6de-46df-8272-e69e08a77121) and click on Share -> Publish.
+You can deploy this project to any static hosting service like Vercel, Netlify, or GitHub Pages.
 
-## Can I connect a custom domain to my Lovable project?
+1. Build the project: `npm run build`
+2. Deploy the `dist` folder to your hosting service
 
-Yes, you can!
+## Custom Domain
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+You can connect a custom domain through your hosting provider's domain settings.
