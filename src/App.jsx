@@ -3,6 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from "./contexts/AuthContext";
 import { startTransition } from "react";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -12,6 +15,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Dashboard from "./pages/Dashboard";
 import CreateListing from "./pages/CreateListing";
 import Booking from "./pages/Booking";
+import Payment from "./pages/Payment";
 import Membership from "./pages/Membership";
 import HowItWorks from "./pages/HowItWorks";
 import Support from "./pages/Support";
@@ -23,19 +27,33 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="min-h-screen bg-background text-foreground">
+      <AuthProvider>
+        <TooltipProvider>
           <Toaster />
           <Sonner />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            className="mt-16"
+          />
           <BrowserRouter future={{ v7_startTransition: startTransition, v7_relativeSplatPath: true }}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/home" element={<Home />} />
               <Route path="/browse" element={<Browse />} />
               <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/payment/:id" element={<Payment />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/create-listing" element={<CreateListing />} />
-              <Route path="/booking" element={<Booking />} />
+              <Route path="/booking/:id?" element={<Booking />} />
               <Route path="/membership" element={<Membership />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/support" element={<Support />} />
@@ -44,8 +62,8 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-        </div>
-      </TooltipProvider>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

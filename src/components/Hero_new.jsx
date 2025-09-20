@@ -78,43 +78,30 @@ const TypewriterText = ({ words, className = "" }) => {
 };
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
     
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-16 pt-16">
-      {/* Use negative margin and padding to extend behind header while maintaining content position */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-blue-50 animate-gradient-x"></div>
       
-      {/* Enhanced geometric floating shapes with magnetic and morphing effects */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full opacity-30 animate-float animate-magnetic blur-sm"></div>
-      <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-blue-200 to-blue-300 rounded-lg opacity-40 animate-float-delayed animate-drift-gentle blur-sm"></div>
-      <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-xl opacity-35 animate-float-slow animate-morph-shape blur-sm"></div>
-      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-25 animate-float-reverse animate-magnetic blur-sm"></div>
-      
-      {/* Additional premium floating elements */}
-      <div className="absolute top-1/4 left-16 w-6 h-6 bg-primary/20 rounded-full animate-float animate-drift-gentle" style={{ animationDelay: '1.5s' }}></div>
-      <div className="absolute bottom-1/3 right-16 w-10 h-10 border border-primary/30 rounded-xl animate-float animate-magnetic opacity-40" style={{ animationDelay: '0.8s' }}></div>
-      <div className="absolute top-2/3 left-1/3 w-4 h-4 bg-gradient-to-br from-primary/25 to-blue-400/25 animate-morph-shape" style={{ animationDelay: '2.2s' }}></div>
+      {/* Geometric floating shapes */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full opacity-30 animate-float blur-sm"></div>
+      <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-blue-200 to-blue-300 rounded-lg opacity-40 animate-float-delayed blur-sm"></div>
+      <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-xl opacity-35 animate-float-slow blur-sm"></div>
+      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-25 animate-float-reverse blur-sm"></div>
 
       {/* Background with parallax effect */}
       <picture className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20">

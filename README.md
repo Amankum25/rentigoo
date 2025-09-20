@@ -2,6 +2,42 @@
 
 A modern rental marketplace built with React and Vite.
 
+## Browse Page Overview
+
+The `Browse` page (`src/pages/Browse.jsx`) provides a client-side exploration experience for listings using mock data.
+
+Features implemented:
+- Search across title, location, and owner.
+- Category filter (single select) with an `All` option.
+- Price range slider ($0–$500+) implemented as a 0–100 slider scaled in code.
+- Availability toggle (show only items marked `Available`).
+- Sort options: Newest, Price (Low→High / High→Low), Rating.
+- Responsive grid with `ListingCard` components.
+- Client-side pagination (12 items per page).
+- Empty state messaging.
+
+Supporting modules:
+- `src/lib/mockListings.js`: Generates 125 mock listings and exposes `filterListings` + `sortListings` helpers.
+- `src/components/ListingCard.jsx`: Card component for individual listings.
+
+Implementation notes:
+- UI primitives (select, slider, switch, etc.) were originally copied with TypeScript generic annotations; these were converted to plain JavaScript for the current setup. If you migrate to TypeScript later, restore appropriate type parameters.
+- When replacing mock data with a real API, wrap fetches in React Query (`@tanstack/react-query`). Keep local filter state, or push filters into the query key if you want server-side filtering.
+
+### Replacing Mock Data with an API (Suggested Steps)
+1. Install/confirm `@tanstack/react-query` (already present).
+2. Create an API service function, e.g. `fetchListings({ page, pageSize, ...filters })`.
+3. Replace mock imports in `Browse.jsx` with a React Query call using the filters & pagination as part of the `queryKey`.
+4. Show loading skeletons using existing skeleton component (add if desired) while data loads.
+5. Handle errors with a retry button and a toast notification.
+
+### Potential Enhancements
+- Multi-select categories (+tags UI) & a Clear Filters button.
+- Persist filters in the URL via `useSearchParams` so sharable links reflect state.
+- Infinite scroll / virtualized list for large result sets (e.g. `react-window`).
+- Server-driven facets (show counts per category).
+- Auth-aware actions (favorite / quick rent buttons) once auth is added.
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
@@ -35,28 +71,3 @@ npm run dev
 **Use GitHub Codespaces**
 
 - Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-You can deploy this project to any static hosting service like Vercel, Netlify, or GitHub Pages.
-
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to your hosting service
-
-## Custom Domain
-
-You can connect a custom domain through your hosting provider's domain settings.

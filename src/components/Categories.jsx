@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Sofa, Smartphone, Car, Wrench, Camera, Gamepad2 } from "lucide-react";
+import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
 
 const Categories = () => {
   const categories = [
@@ -47,14 +48,16 @@ const Categories = () => {
     }
   ];
 
+  const [setRef, visibleItems] = useStaggeredAnimation(categories, 0.15);
+
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">
             Browse by Category
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Discover thousands of items across multiple categories, all available for rent
           </p>
         </div>
@@ -62,39 +65,57 @@ const Categories = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {categories.map((category, index) => {
             const Icon = category.icon;
+            const isVisible = visibleItems.has(index);
+            
             return (
               <div
                 key={index}
-                className="glass-card p-8 group hover:scale-105 transition-all duration-300 cursor-pointer hover:shadow-glow"
+                ref={setRef(index)}
+                className={`glass-card-enhanced p-8 group cursor-pointer relative overflow-hidden
+                  transition-all duration-700 ease-out
+                  hover:scale-105 hover:shadow-2xl hover:-translate-y-4
+                  ${isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                  }`}
               >
-                <div className="flex items-start space-x-4">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${category.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="h-8 w-8 text-white" />
+                {/* Animated background gradient on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                
+                <div className="flex items-start space-x-6 relative z-10">
+                  <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.gradient} flex items-center justify-center 
+                    group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl transition-all duration-500 shadow-lg`}>
+                    <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-transform duration-300" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {category.title}
                     </h3>
-                    <p className="text-sm font-medium text-primary mb-2">
+                    <p className="text-lg font-medium text-primary mb-3 group-hover:scale-105 transition-transform duration-300 origin-left">
                       {category.count}
                     </p>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300 text-lg">
                       {category.description}
                     </p>
                   </div>
                 </div>
+                
+                {/* Enhanced hover shine effect */}
+                <div className="absolute top-0 -left-full h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent 
+                  group-hover:left-full transition-all duration-1000 transform skew-x-12" />
               </div>
             );
           })}
         </div>
 
-        <div className="text-center">
+        <div className="text-center animate-fade-in-up" style={{ animationDelay: '1s' }}>
           <Button 
             size="lg"
             variant="outline"
-            className="glass border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 px-8 py-6 text-lg"
+            className="glass border-2 border-primary/20 hover:border-primary/40 hover:bg-primary/5 hover:scale-110 
+              transition-all duration-300 px-8 py-6 text-lg group"
           >
-            View All Categories
+            <span className="group-hover:scale-105 transition-transform duration-300">View All Categories</span>
           </Button>
         </div>
       </div>
