@@ -1,8 +1,9 @@
+import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Sofa, Smartphone, Car, Wrench, Camera, Gamepad2 } from "lucide-react";
 import { useStaggeredAnimation } from "@/hooks/use-scroll-animation";
 
-const Categories = () => {
+const Categories = memo(() => {
   const categories = [
     {
       icon: Sofa,
@@ -51,18 +52,18 @@ const Categories = () => {
   const [setRef, visibleItems] = useStaggeredAnimation(categories, 0.15);
 
   return (
-    <section className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in-up">
+    <section className="py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 animate-fade-in-up">
             Browse by Category
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up px-4" style={{ animationDelay: '0.2s' }}>
             Discover thousands of items across multiple categories, all available for rent
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {categories.map((category, index) => {
             const Icon = category.icon;
             const isVisible = visibleItems.has(index);
@@ -71,9 +72,9 @@ const Categories = () => {
               <div
                 key={index}
                 ref={setRef(index)}
-                className={`glass-card-enhanced p-8 group cursor-pointer relative overflow-hidden
+                className={`glass-card-enhanced p-6 sm:p-8 group cursor-pointer relative overflow-hidden
                   transition-all duration-700 ease-out
-                  hover:scale-105 hover:shadow-2xl hover:-translate-y-4
+                  hover:scale-105 hover:shadow-2xl hover:-translate-y-2 sm:hover:-translate-y-4
                   ${isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-8'
@@ -121,6 +122,6 @@ const Categories = () => {
       </div>
     </section>
   );
-};
+});
 
 export default Categories;

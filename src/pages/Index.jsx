@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
-import FloatingParticles from '@/components/FloatingParticles';
+import LightParticles from '@/components/LightParticles';
 import Layout from '@/components/Layout';
 
+// Pre-load critical components for faster rendering
 const Hero = React.lazy(() => import("@/components/Hero"));
 const HowItWorks = React.lazy(() => import("@/components/HowItWorks"));
 const Categories = React.lazy(() => import("@/components/Categories"));
@@ -31,12 +32,12 @@ const Index = () => {
   return (
     <Layout>
       <div className="relative">
-        {/* Floating particles background */}
-        <FloatingParticles count={30} />
+        {/* Light particles background - CSS-based for better performance */}
+        <LightParticles count={10} />
         
         <Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="animate-pulse text-lg">Loading amazing experiences...</div>
+          <div className="min-h-screen">
+            <div className="h-16"></div>
           </div>
         }>
           <AnimatedSection>

@@ -100,7 +100,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-16 pt-16">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-16 pt-16 px-4 sm:px-6">
       {/* Use negative margin and padding to extend behind header while maintaining content position */}
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-blue-50 animate-gradient-x"></div>
@@ -129,11 +129,11 @@ const Hero = () => {
       </picture>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in-up">
           {/* Enhanced headline with gradient text */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
               <span className="block bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent animate-slide-in-left mb-2">
                 Share. Rent.
               </span>
@@ -144,60 +144,60 @@ const Hero = () => {
                 />
               </span>
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-light" style={{ animationDelay: '0.5s' }}>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-light px-4" style={{ animationDelay: '0.5s' }}>
               Discover amazing items from your neighbors or share your own treasures with the community
             </p>
           </div>
 
-          {/* Enhanced search bar with glassmorphism */}
-          <div className="max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-            <div className="glass-card-enhanced p-3 flex items-center space-x-3 hover:shadow-2xl hover:scale-105 transition-all duration-500 backdrop-blur-lg">
-              <div className="flex-1 flex items-center space-x-4 px-6">
-                <Search className="h-6 w-6 text-teal-500" />
+          {/* Enhanced search bar with glassmorphism - Mobile optimized */}
+          <div className="max-w-3xl mx-auto animate-fade-in-up px-4" style={{ animationDelay: '0.7s' }}>
+            <div className="glass-card-enhanced p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0 sm:space-x-3 hover:shadow-2xl hover:scale-105 transition-all duration-500 backdrop-blur-lg">
+              <div className="flex-1 flex items-center space-x-3 sm:space-x-4 px-4 sm:px-6 py-2 sm:py-0">
+                <Search className="h-5 w-5 sm:h-6 sm:w-6 text-teal-500 flex-shrink-0" />
                 <input 
                   type="text" 
                   placeholder="What would you like to find today?"
-                  className="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder:text-gray-500 text-lg"
+                  className="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder:text-gray-500 text-base sm:text-lg min-w-0"
                 />
               </div>
-              <Button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-8 py-4 text-lg font-semibold">
+              <Button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold">
                 Search
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </div>
           </div>
 
-          {/* Enhanced action buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
+          {/* Enhanced action buttons - Mobile optimized */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-6 px-4 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-10 py-5 text-lg font-semibold group"
+              className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold group"
             >
-              <Search className="mr-3 h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
+              <Search className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:rotate-12 transition-transform duration-300" />
               Start Exploring
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-2 border-teal-500 text-teal-600 hover:bg-teal-50 hover:border-teal-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-10 py-5 text-lg font-semibold backdrop-blur-sm bg-white/50"
+              className="w-full sm:w-auto border-2 border-teal-500 text-teal-600 hover:bg-teal-50 hover:border-teal-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold backdrop-blur-sm bg-white/50"
             >
               List Your Item
             </Button>
           </div>
 
-          {/* Enhanced stats with animated counters */}
-          <div className="grid grid-cols-3 gap-8 pt-16 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '1.1s' }}>
+          {/* Enhanced stats with animated counters - Mobile optimized */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 sm:pt-16 max-w-4xl mx-auto animate-fade-in-up px-4" style={{ animationDelay: '1.1s' }}>
             <div className="text-center group">
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                 <AnimatedCounter target={25} suffix="K+" />
               </div>
-              <div className="text-lg text-gray-600 font-medium mt-2">Items Available</div>
+              <div className="text-sm sm:text-base lg:text-lg text-gray-600 font-medium mt-1 sm:mt-2">Items Available</div>
             </div>
             <div className="text-center group">
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
                 <AnimatedCounter target={10} suffix="K+" />
               </div>
-              <div className="text-lg text-gray-600 font-medium mt-2">Happy Users</div>
+              <div className="text-sm sm:text-base lg:text-lg text-gray-600 font-medium mt-1 sm:mt-2">Happy Users</div>
             </div>
             <div className="text-center group">
               <div className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">

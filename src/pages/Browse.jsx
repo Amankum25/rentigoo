@@ -232,22 +232,22 @@ const Browse = () => {
   return (
     <Layout>
       {/* Hero / Header */}
-      <section className="relative pt-8 pb-12 md:pt-16 md:pb-16 overflow-hidden">
+      <section className="relative pt-6 pb-8 sm:pt-8 sm:pb-12 md:pt-16 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/80 to-background" />
         <div className="absolute -top-24 -left-24 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="relative container mx-auto px-4">
-          <div className="max-w-3xl space-y-6">
-            <h1 className="text-hero text-4xl md:text-6xl font-bold tracking-tight">
+        <div className="relative container mx-auto px-4 sm:px-6">
+          <div className="max-w-3xl space-y-4 sm:space-y-6">
+            <h1 className="text-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent">Browse</span>{' '}
               <span className="text-foreground">Listings</span>
             </h1>
-            <p className="text-body-large text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
               Discover items from trusted owners. Filter by category, price, and availability to find exactly what you need.
             </p>
             
             {/* Prominent Search */}
-            <div className="glass-card p-2 flex items-center space-x-2 max-w-xl">
+            <div className="glass-card p-2 flex items-center space-x-2 max-w-xl w-full">
               <div className="flex items-center space-x-3 px-3 flex-1">
                 <Search className="h-5 w-5 text-muted-foreground" />
                 <input
@@ -267,11 +267,11 @@ const Browse = () => {
               </Button>
             </div>
             
-            {/* Category chips */}
-            <div className="flex gap-2 overflow-auto pb-2">
+            {/* Category chips - Mobile optimized */}
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
               <Badge
                 onClick={() => setSelectedCategory("All")}
-                className={`cursor-pointer px-4 py-2 transition ${
+                className={`cursor-pointer px-3 sm:px-4 py-2 transition flex-shrink-0 ${
                   selectedCategory === "All" ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/70"
                 }`}
               >
@@ -281,7 +281,7 @@ const Browse = () => {
                 <Badge
                   key={c}
                   onClick={() => setSelectedCategory(c)}
-                  className={`cursor-pointer px-4 py-2 transition whitespace-nowrap ${
+                  className={`cursor-pointer px-3 sm:px-4 py-2 transition whitespace-nowrap flex-shrink-0 ${
                     selectedCategory === c ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/70"
                   }`}
                 >
@@ -293,8 +293,8 @@ const Browse = () => {
         </div>
       </section>
 
-      <section className="relative pb-24">
-        <div className="container mx-auto px-4 grid gap-8 md:grid-cols-12">
+      <section className="relative pb-16 sm:pb-20 lg:pb-24">
+        <div className="container mx-auto px-4 sm:px-6 grid gap-6 sm:gap-8 md:grid-cols-12">
           {/* Sidebar Filters (desktop) */}
           <aside className="hidden md:block md:col-span-3">
             <div className="glass-card rounded-xl p-5 space-y-6 sticky top-28 border border-primary/10">
@@ -475,14 +475,14 @@ const Browse = () => {
             )}
             
             {filteredListings.length > 0 && (
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredListings.map(item => (
                   <Card key={item.id} className="border border-border hover:shadow-lg transition-all duration-300 group overflow-hidden">
                     <div className="relative overflow-hidden">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       {item.createdBy && (
                         <div className="absolute top-2 right-2">
@@ -492,11 +492,11 @@ const Browse = () => {
                         </div>
                       )}
                     </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                    <CardContent className="p-3 sm:p-4">
+                      <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 text-sm sm:text-base">
                         {item.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{item.description}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground mb-3 line-clamp-2">{item.description}</p>
                       
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-1">

@@ -32,7 +32,7 @@ export const useScrollAnimation = (threshold = 0.1, rootMargin = '0px') => {
   return [ref, isVisible];
 };
 
-export const useStaggeredAnimation = (items, delay = 0.1) => {
+export const useStaggeredAnimation = (items, delay = 0.05) => {
   const [visibleItems, setVisibleItems] = useState(new Set());
   const refs = useRef([]);
 
@@ -41,12 +41,13 @@ export const useStaggeredAnimation = (items, delay = 0.1) => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
+            // Reduced delay for faster animations
             setTimeout(() => {
               setVisibleItems(prev => new Set([...prev, index]));
             }, index * delay * 1000);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1, rootMargin: '50px' }
       );
 
       if (ref) observer.observe(ref);
