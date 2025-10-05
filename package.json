@@ -1,8 +1,10 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "rentigoo",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A modern rental marketplace platform for sharing and lending items",
+  "author": "Aman Kumar",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
