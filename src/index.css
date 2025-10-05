@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import './premium-styles.css';
 
 @tailwind base;
 @tailwind components;
@@ -9,12 +10,19 @@
   will-change: auto;
 }
 
-/* Enable hardware acceleration for animations */
-.animate-pulse,
-.animate-bounce,
+/* Only essential animations get hardware acceleration */
 .animate-spin {
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+/* Reduce animation preferences for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Poppins Font Classes */

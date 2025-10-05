@@ -49,7 +49,8 @@ const Categories = memo(() => {
     }
   ];
 
-  const [setRef, visibleItems] = useStaggeredAnimation(categories, 0.15);
+  // Removed heavy staggered animation for better performance
+  const visibleItems = new Set(categories.map((_, index) => index));
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
@@ -71,22 +72,15 @@ const Categories = memo(() => {
             return (
               <div
                 key={index}
-                ref={setRef(index)}
-                className={`glass-card-enhanced p-6 sm:p-8 group cursor-pointer relative overflow-hidden
-                  transition-all duration-700 ease-out
-                  hover:scale-105 hover:shadow-2xl hover:-translate-y-2 sm:hover:-translate-y-4
-                  ${isVisible 
-                    ? 'opacity-100 translate-y-0' 
-                    : 'opacity-0 translate-y-8'
-                  }`}
+                className="premium-card elegant-hover micro-glow p-6 sm:p-8 group cursor-pointer relative overflow-hidden rounded-xl"
               >
                 {/* Animated background gradient on hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
                 
                 <div className="flex items-start space-x-6 relative z-10">
                   <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${category.gradient} flex items-center justify-center 
-                    group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-2xl transition-all duration-500 shadow-lg`}>
-                    <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-transform duration-300" />
+                    group-hover:scale-105 transition-all duration-200 shadow-lg`}>
+                    <Icon className="h-10 w-10 text-white group-hover:scale-110 transition-transform duration-200" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">

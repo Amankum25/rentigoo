@@ -102,19 +102,14 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden -mt-16 pt-16 px-4 sm:px-6">
       {/* Use negative margin and padding to extend behind header while maintaining content position */}
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-blue-50 animate-gradient-x"></div>
+      {/* Enhanced gradient background */}
+      <div className="absolute inset-0 enhanced-gradient-bg"></div>
       
-      {/* Enhanced geometric floating shapes with magnetic and morphing effects */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full opacity-30 animate-float animate-magnetic blur-sm"></div>
-      <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-blue-200 to-blue-300 rounded-lg opacity-40 animate-float-delayed animate-drift-gentle blur-sm"></div>
-      <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-xl opacity-35 animate-float-slow animate-morph-shape blur-sm"></div>
-      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-25 animate-float-reverse animate-magnetic blur-sm"></div>
-      
-      {/* Additional premium floating elements */}
-      <div className="absolute top-1/4 left-16 w-6 h-6 bg-primary/20 rounded-full animate-float animate-drift-gentle" style={{ animationDelay: '1.5s' }}></div>
-      <div className="absolute bottom-1/3 right-16 w-10 h-10 border border-primary/30 rounded-xl animate-float animate-magnetic opacity-40" style={{ animationDelay: '0.8s' }}></div>
-      <div className="absolute top-2/3 left-1/3 w-4 h-4 bg-gradient-to-br from-primary/25 to-blue-400/25 animate-morph-shape" style={{ animationDelay: '2.2s' }}></div>
+      {/* Static decorative elements for visual appeal */}
+      <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full opacity-20 blur-sm"></div>
+      <div className="absolute top-40 right-20 w-16 h-16 bg-gradient-to-br from-blue-200 to-blue-300 rounded-lg opacity-25 blur-sm"></div>
+      <div className="absolute bottom-32 left-1/4 w-12 h-12 bg-gradient-to-br from-purple-200 to-purple-300 rounded-xl opacity-20 blur-sm"></div>
+      <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-gradient-to-br from-pink-200 to-pink-300 rounded-full opacity-15 blur-sm"></div>
 
       {/* Background with parallax effect */}
       <picture className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20">
@@ -130,28 +125,25 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
-        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 animate-fade-in-up">
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
           {/* Enhanced headline with gradient text */}
           <div className="space-y-6">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight">
-              <span className="block bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent animate-slide-in-left mb-2">
+              <span className="block bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent mb-2">
                 Share. Rent.
               </span>
-              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-slide-in-right">
-                <TypewriterText 
-                  words={["Thrive.", "Explore.", "Connect."]} 
-                  className="inline-block"
-                />
+              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                Thrive.
               </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-light px-4" style={{ animationDelay: '0.5s' }}>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light px-4">
               Discover amazing items from your neighbors or share your own treasures with the community
             </p>
           </div>
 
           {/* Enhanced search bar with glassmorphism - Mobile optimized */}
-          <div className="max-w-3xl mx-auto animate-fade-in-up px-4" style={{ animationDelay: '0.7s' }}>
-            <div className="glass-card-enhanced p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0 sm:space-x-3 hover:shadow-2xl hover:scale-105 transition-all duration-500 backdrop-blur-lg">
+          <div className="max-w-3xl mx-auto px-4">
+            <div className="premium-glass-card elegant-hover p-2 sm:p-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-0 sm:space-x-3 rounded-2xl">
               <div className="flex-1 flex items-center space-x-3 sm:space-x-4 px-4 sm:px-6 py-2 sm:py-0">
                 <Search className="h-5 w-5 sm:h-6 sm:w-6 text-teal-500 flex-shrink-0" />
                 <input 
@@ -160,7 +152,7 @@ const Hero = () => {
                   className="flex-1 bg-transparent border-none outline-none text-gray-800 placeholder:text-gray-500 text-base sm:text-lg min-w-0"
                 />
               </div>
-              <Button className="bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold">
+              <Button className="premium-button micro-bounce text-white rounded-full px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold">
                 Search
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
@@ -168,34 +160,34 @@ const Hero = () => {
           </div>
 
           {/* Enhanced action buttons - Mobile optimized */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-6 px-4 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-6 px-4">
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold group"
+              className="w-full sm:w-auto premium-button micro-bounce text-white rounded-full px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold group"
             >
-              <Search className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:rotate-12 transition-transform duration-300" />
+              <Search className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 group-hover:scale-110 transition-transform duration-200" />
               Start Exploring
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="w-full sm:w-auto border-2 border-teal-500 text-teal-600 hover:bg-teal-50 hover:border-teal-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold backdrop-blur-sm bg-white/50"
+              className="w-full sm:w-auto premium-card micro-bounce border-2 border-teal-500 text-teal-600 hover:bg-teal-50 hover:border-teal-600 hover:text-teal-700 rounded-full px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold"
             >
               List Your Item
             </Button>
           </div>
 
-          {/* Enhanced stats with animated counters - Mobile optimized */}
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 sm:pt-16 max-w-4xl mx-auto animate-fade-in-up px-4" style={{ animationDelay: '1.1s' }}>
+          {/* Enhanced stats - Mobile optimized */}
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-12 sm:pt-16 max-w-4xl mx-auto px-4">
             <div className="text-center group">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter target={25} suffix="K+" />
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200">
+                25K+
               </div>
               <div className="text-sm sm:text-base lg:text-lg text-gray-600 font-medium mt-1 sm:mt-2">Items Available</div>
             </div>
             <div className="text-center group">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
-                <AnimatedCounter target={10} suffix="K+" />
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-200">
+                10K+
               </div>
               <div className="text-sm sm:text-base lg:text-lg text-gray-600 font-medium mt-1 sm:mt-2">Happy Users</div>
             </div>
